@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  email    String    @unique
+  name     String?
+  role     String    @default("user")
+  bookings Booking[]
+}
+
+model CentroSportivo {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  nome      String
+  indirizzo String
+  sports    Sport[]
+}
+
+model Sport {
+  id               String         @id @default(auto()) @map("_id") @db.ObjectId
+  nome             String
+  centroSportivo   CentroSportivo @relation(fields: [centroSportivoId], references: [id])
+  centroSportivoId String         @db.ObjectId
+
+  bookings Booking[]
+}
+
+model Booking {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  user    User     @relation(fields: [userId], references: [id])
+  userId  String   @db.ObjectId
+  sport   Sport    @relation(fields: [sportId], references: [id])
+  sportId String   @db.ObjectId
+  orario  DateTime
+  stato   String   @default("pending")
+}
