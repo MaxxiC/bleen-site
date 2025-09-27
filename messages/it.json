@@ -2,5 +2,9 @@
   "Home": {
     "title": "Benvenuto",
     "welcome": "Ciao, questo è un sito multilingua!"
+  },
+  "About": {
+    "title": "Chi siamo",
+    "description": "Questa è la pagina About."
   }
 }

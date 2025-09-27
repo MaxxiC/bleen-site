@@ -1,0 +1,10 @@
+{
+  "Home": {
+    "title": "Welcome",
+    "welcome": "Hi, this is a multilingual site!"
+  },
+  "About": {
+    "title": "About us",
+    "description": "This is the About page."
+  }
+}
