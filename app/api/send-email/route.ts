@@ -3,14 +3,19 @@ import { NextResponse } from "next/server";
 import { transporter } from "@/lib/mailer";
 
 export async function POST(req: Request) {
-  const body = await req.json();
+  try {
+    const body = await req.json();
 
-  await transporter.sendMail({
-    from: process.env.SMTP_USER,
-    to: body.to,
-    subject: body.subject,
-    text: body.message,
-  });
+    await transporter.sendMail({
+      from: `"Il mio sito" <info@${process.env.SMTP_USER}>`,
+      to: body.to,
+      subject: body.subject,
+      text: body.message,
+    });
 
-  return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true });
+  } catch (err) {
+    console.error("Errore invio email:", err);
+    return NextResponse.json({ ok: false, error: "Errore invio email" }, { status: 500 });
+  }
 }
