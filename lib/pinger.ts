@@ -28,7 +28,7 @@ setInterval(async () => {
         if (!res.ok) {
             throw new Error(`Status: ${res.status}`);
         }
-        //console.log("--Ping inviato con successo!");
+        console.log("--Ping inviato con successo!");
     } catch (error: unknown) {
         if (error instanceof Error) {
             console.error("--Errore durante il ping: ", error.message);

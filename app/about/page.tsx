@@ -1,9 +1,9 @@
 // File: app/about/page.tsx
 "use client"
 import { useTranslations } from 'next-intl';
-import { LanguageSwitcher } from "../../components/LanguageSwitcher";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { Button, Alert } from "react-bootstrap";
-import FadeModalExample from "../../components/FadeModalExample";
+import FadeModalExample from "@/components/FadeModalExample";
 
 export default function AboutPage() {
   const t = useTranslations('About');
