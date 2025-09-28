@@ -4,6 +4,8 @@ import "./globals.css";
 import { NextIntlClientProvider } from "next-intl"
 import { cookies } from "next/headers"
 import "bootstrap/dist/css/bootstrap.min.css";
+import PingStarter from "@/components/PingStarter";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 
 const geistSans = Geist({
@@ -34,6 +36,10 @@ export default async function RootLayout({
   return (
     <html lang={lang}>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        
+        <GoogleAnalytics />
+        <PingStarter />
+
         <NextIntlClientProvider locale={lang} messages={messages}>
           {children}
         </NextIntlClientProvider>
