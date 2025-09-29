@@ -7,7 +7,7 @@ export async function POST(req: Request) {
     const body = await req.json();
 
     await transporter.sendMail({
-      from: `"Il mio sito" <info@${process.env.SMTP_USER}>`,
+      from: `"Il mio sito" <${process.env.SMTP_MAIL}>`,
       to: body.to,
       subject: body.subject,
       text: body.message,
